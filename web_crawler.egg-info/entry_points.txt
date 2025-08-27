@@ -1,0 +1,2 @@
+[console_scripts]
+web-crawler = Crawler.cli:cli

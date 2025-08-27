@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: web-crawler
+Version: 0.1
+Requires-Dist: aiohttp>=3.8.0
+Requires-Dist: beautifulsoup4>=4.11.0
+Requires-Dist: lxml>=4.9.0
+Requires-Dist: click>=8.1.0
+Requires-Dist: PyYAML>=6.0
+Requires-Dist: tqdm>=4.65.0
+Requires-Dist: loguru>=0.7.0
+Dynamic: requires-dist

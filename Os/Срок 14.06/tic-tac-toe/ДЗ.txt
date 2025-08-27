@@ -1,0 +1,4 @@
+Изучить информацию по объектам в JavaScript
+
+learn.JavaScript: https://learn.javascript.ru/object
+ДОКА: https://doka.guide/js/object/

@@ -1,0 +1,29 @@
+crawler:
+  max_depth: 5
+  max_pages: 1000
+  concurrent_requests: 10
+  request_delay: 1.0
+  timeout: 30
+  user_agent: "WebCrawler/1.0"
+  respect_robots_txt: true
+  follow_redirects: true
+  max_redirects: 5
+
+filters:
+  allowed_domains: []
+  excluded_patterns:
+    - ".*\\.pdf$"
+    - ".*\\.(jpg|png|gif|svg)$"
+    - ".*\\.(zip|rar|tar|gz)$"
+    - "/admin/.*"
+    - "/private/.*"
+
+storage:
+  database_path: "crawler_data/crawler.db"
+  export_path: "exports"
+
+logging:
+  level: "INFO"
+  file: "crawler.log"
+  max_size: "10MB"
+  backup_count: 5

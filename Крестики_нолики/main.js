@@ -1,0 +1,125 @@
+const gameBoard = document.getElementById('game');
+const statusBar = document.getElementById('status');
+const resetButton = document.getElementById('reset-button');
+
+//Создадим массив для хранения состояния игры и заполним его пустым текстом
+let board = Array(9).fill('');
+// Array(9) = [ ,  ,  ,  ,  ,  ,  ,  ,  , ]
+// fill('') = ['', 'X', '', '', '0', '', 'X', 'X', '']
+//              0   1   2   3    4    5   6    7    8   это индексы
+//Переменная для хранения текущего игрока
+let currentPlayer = 'X';
+//Состояние игры
+let running = true;
+//Переменная для хранения победных комбинаций игры
+const winComb = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], //Комбинации в строке
+    [0, 3, 4], [1, 4, 7], [2, 5, 8], //Комбинации в столбце
+    [0, 4, 8], [2, 4, 6] //Комбинации по диагонали
+];
+
+//${} - конструкция форматирования переменных
+
+//Функция для начала игры
+function initGame(){
+    //Обновляем переменные игры
+    board = Array(9).fill('');
+    currentPlayer = 'X';
+    running = true;
+    //Устанавливаем статусбар в начальное значение
+    statusBar.textContent = `Ход игрока ${currentPlayer}`
+    //Создаем пустое HTML наполнение блока
+    gameBoard.innerHTML = '';
+    //Запуск цикла на девять итераций
+    // (итератор; условие выхода; условие шага)
+    // итератор- переменная, являющаяся счетчиком цикла
+    // Условия цикла for
+    // ++ - инкремент (увеличение на одну единицу (согласно единице измеререния))
+    // () - указания на вызов функции, либо на создание условия
+    for (let i=0; i<9; i++){
+        //Созаем ячейку игрового поля
+        const cell = document.createElement('div');
+        //Добавление стиля к элементу
+        //[html элемент].[обращение к свойству class].добавить('имя класса');
+        cell.classList.add('cell');
+        //Добавление атрибута data-index
+        //data-index необходим для связывания ячейки и места в таблице
+        cell.setAttribute('data-index', i);
+        //Добавим атрибут role для установки поведения ячейки
+        //как ячейки таблицы
+        cell.setAttribute('role', 'gridcell');
+        cell.setAttribute('tabindex', 0);
+        //Добавляем прослушивание события по клику на ячейку
+        cell.addEventListener('click', cellClicked);
+        //Добавляем полученный div в наше игровое поле
+        gameBoard.appendChild(cell);
+    }
+}
+
+function cellClicked(e){
+    // event.target - содержит в себе элемент, над которым проводится действие
+    // Element.getAttribute()- получение значения атрибута по его имени
+    const index = e.target.getAttribute('data-index');
+    // Проверяет, если в поле, куда щелкнул игрок уже находится Х и О
+    // или игра не была запущена, то функция завершает работу
+    if (board[index] !== '' || !running) { return; }
+    updateCell(e.target, index);
+    checkWinner();
+    //если index = 0, то мы получим значение нулевого элемента board
+}
+
+function updateCell(cell, index){
+    board[index] = currentPlayer;
+    cell.textContent = currentPlayer;
+    
+    // Добавляем стиль в зависимости от текущего игрока
+    if (currentPlayer === 'X') {
+        cell.style.backgroundColor = 'green'; // Зеленый цвет для X
+    } else {
+        cell.style.backgroundColor = 'red'; // Красный цвет для O
+    }
+    
+    cell.classList.add('disabled');
+    //console.log(board); чтобы увидеть в консоли значения нажатия на поля
+}
+
+function checkWinner(){
+    let roundWon = false;
+    for (const combo of winComb){
+        const[a, b, c] = combo;
+        /* if (
+        board[a] - проверка на наличие в массиве board элемента с индексом [a]
+        board[a] === board[b] - проверка на равность значения в массиве игры ячейки под индексом [a] на равность ячейки под индексом [b]
+
+        ) */
+        if (board[a] && board[a] === board[b] && board[a] === board[c]){
+            roundWon = true;
+            break;
+        }    
+    }
+    // если была найдена выигрышная  комбинация
+    if (roundWon){
+        statusBar.textContent = `Победил игрок ${currentPlayer}`;
+        running = false;
+        return;
+    }
+    // Если игра завершилась ничьей проверяем заполненность всех клеточек и выводим НИЧЬЯ
+    if (!board.includes('')){
+        statusBar.textContent = 'Ничья!';
+        running = false;
+        return;
+    }
+    // Смена игрока
+    if (currentPlayer === 'X') {
+        currentPlayer = 'O';
+    }
+    else{
+        currentPlayer = 'X';
+    }
+}
+
+resetButton.addEventListener('click', ()=>{
+    initGame();
+});
+
+initGame();

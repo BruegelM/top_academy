@@ -1,0 +1,284 @@
+/* Основные стили для страницы */
+html, body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    height: 100%;
+}
+
+/* Стили для контейнеров */
+.main-container {
+    display: flex;
+    height: 100vh; /* Высота на весь видимый экран */
+    width: 100%;
+}
+
+.menu {
+    width: 20%; /* Занимает 20% ширины */
+    height: 100%;
+    background-color: #01b93e;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.menu-button {
+    padding: 10px 15px;
+    background-color: white;
+    color: #01b93e;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 80%;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    margin: 5px 0;
+}
+
+.menu-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+    text-decoration: none;
+    color: #025019;
+}
+
+.menu-button:active, .menu-button:focus {
+    outline: none;
+    text-decoration: none;
+    color: #01b93e;
+}
+
+.main {
+    width: 80%; /* Занимает оставшиеся 80% ширины */
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: auto; /* Добавляем прокрутку, если контент не помещается */
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    flex: 33%;
+    align-items: center;
+    justify-content: space-evenly;
+    width: auto;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+/* Контейнер карточки с 3D-перспективой */
+.card {
+    width: 30%;
+    height: 70vh;
+    perspective: 1000px; /* Глубина 3D-эффекта */
+    cursor: pointer;
+    margin: 2vh;
+}
+
+/* Внутренний контейнер для анимации */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d; /* Сохраняет 3D-пространство */
+}
+
+/* Стили для обеих сторон */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Скрывает "изнанку" */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(218, 218, 218);
+    border-radius: 15px;
+    padding: 2vh;
+    box-sizing: border-box;
+}
+
+/* Обратная сторона (изначально скрыта) */
+.card-back {
+    transform: rotateY(180deg);
+}
+
+/* Анимация переворота при добавлении класса .flipped */
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-header {
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    align-items: center center;
+    justify-content: center;
+    text-align: center ;
+}
+
+.card-text {
+    font-size: 2vh;
+    margin-bottom: 2vh;
+    align-items: center center;
+    justify-content: center;
+    text-align: center ;
+}
+
+.card-ico {
+    font-size: 20vh;
+    margin-bottom: 2vh;
+    align-items: center center;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.task {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: rgb(218, 218, 218);
+    width: 100%;
+    height: 30vh;
+    margin: 2vh 0;
+    padding: 2vh;
+    border: 1px solid #0c0c0c;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.task-header {
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    align-items: center center;
+    margin: 2vw;
+    padding: 2vw;
+}
+
+.task-text {
+    font-size: 2vh;
+    margin-bottom: 2vh;
+    align-items: center center;
+    margin: 2vw;
+    padding: 2vw;
+}
+
+.task-ico {
+    font-size: 20vh;
+    margin-bottom: 2vh;
+    align-items: center center;
+    margin: 2vw;
+    padding: 2vw;
+}
+
+#modal{
+    display: none; /* скрываем по умолчанию чтобы потом сделать отображение по клику*/
+    position: fixed; /* фиксированное расположение*/
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+#modal-img-container {
+    position: relative;
+    text-align: center;
+    margin: auto;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#modal-img {
+    max-width: 90%;
+    max-height: 90%;
+    display: inline-block;
+}
+
+#modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+#modal:target{
+    display: flex;
+}
+
+#gallery{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.photo{
+    max-width: 420px;
+    flex: 30%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.photo img{
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+}
+
+.gallery-panel{
+    gap: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gallery-arrow{
+    display: flex;
+    flex: 10%;
+    gap: 10px;
+    font-size: 30px;
+    justify-content: space-around;
+    text-decoration: none;
+    
+}
+
+.gallery-photos{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+}

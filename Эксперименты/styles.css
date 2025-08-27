@@ -1,0 +1,439 @@
+:root {
+    --bg-dark: #000;
+    --bg-light: #f5f5f7;
+    --text-dark: #1d1d1f;
+    --text-light: #f5f5f7;
+    --accent: #0066cc;
+    --accent-hover: #2997ff;
+    --card-border: rgba(255, 255, 255, 0.1);
+    --gradient: linear-gradient(45deg, #2c3e50, #4ca1af);
+}
+
+/* Стили для хедера Apple */
+.apple-header {
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.apple-nav {
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 22px;
+}
+
+.apple-nav-list {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.apple-nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.apple-nav-link {
+    color: #f5f5f7;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    padding: 10px 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 44px;
+}
+
+.apple-nav-link:hover {
+    opacity: 1;
+}
+
+
+/* Адаптивность для хедера */
+@media (max-width: 768px) {
+    .apple-nav {
+        padding: 0 16px;
+    }
+    
+    .apple-nav-item:not(:first-child):not(:last-child):not(:nth-last-child(2)) {
+        display: none;
+    }
+    
+    .apple-nav-link {
+        padding: 0 8px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+/* Hero-секция */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 600;
+    letter-spacing: -0.003em;
+    margin-bottom: 1rem;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.hero p {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    opacity: 0.8;
+    animation: fadeIn 1.5s ease-out 0.3s forwards;
+}
+
+/* Кнопка в стиле Apple */
+.cta-button {
+    display: inline-block;
+    padding: 12px 22px;
+    background: var(--accent);
+    color: white;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    animation: fadeIn 1.5s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+.cta-button:hover {
+    background: var(--accent-hover);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 119, 255, 0.3);
+}
+
+/* Секции с параллаксом */
+.section {
+    padding: 8rem 5%;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-dark {
+    background: var(--bg-dark);
+}
+
+.section-light {
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+/* Карточки продуктов */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Фиксированное количество колонок */
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: transform 0.5s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для TV Plus Gallery */
+.section-dark {
+    background-color: #000;
+    color: #fff;
+    padding: 80px 0;
+}
+
+.tv-plus-gallery {
+    position: relative;
+    max-width: 1440px;
+    margin: 60px;
+    overflow: hidden;
+}
+
+.gallery-container {
+    display: flex;
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+.gallery-item {
+    flex: 0 0 33.333%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item a {
+    display: block;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.inner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+}
+
+/* Навигация */
+.gallery-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.nav-arrow {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dotnav {
+    display: flex;
+    margin: 0 20px;
+}
+
+.dotnav-item {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.dotnav-item.current {
+    background: white;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .gallery-item {
+        flex: 0 0 100%;
+    }
+    
+    .gallery-item a {
+        height: 400px;
+    }
+}
+
+
+
+/* Стили для набора карточек как на Apple.com */
+.card-set {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    list-style: none;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px);
+}
+
+.feature-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    position: relative;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.theme-dark {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.card-padding {
+    padding: 2rem;
+}
+
+.feature-card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-card-copy {
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.feature-card-label {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+}
+
+.feature-card-headline {
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.feature-card-image-container {
+    position: relative;
+    margin-top: auto;
+    text-align: center;
+}
+
+.feature-card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 200px;
+}
+
+/* Стили для кнопки вызова модального окна */
+.card-cta-modal-button {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.card-cta-modal-button:hover {
+    background: var(--accent-hover);
+    transform: scale(1.1);
+}
+
+.card-cta-modal-button-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: white;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .hero {
+        padding: 0 1rem;
+    }
+    
+    .product-grid,
+    .card-set {
+        grid-template-columns: 1fr;
+    }
+    
+    .feature-card-headline {
+        font-size: 1.5rem;
+    }
+    
+    .section {
+        padding: 4rem 1rem;
+    }
+}

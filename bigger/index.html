@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор НОД</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Калькулятор НОД</h1>
+    <div class="container">
+        <div class="form-group">
+            <label for="number1">Первое число:</label>
+            <input type="number" id="number1" placeholder="Введите первое число" step="any">
+        </div>
+        <div class="form-group">
+            <label for="number2">Второе число:</label>
+            <input type="number" id="number2" placeholder="Введите второе число" step="any">
+        </div>
+        <button id="calculate">Вычислить НОД</button>
+        <div id="result" class="result"></div>
+        <div class="explanation">
+            <p><strong>Наибольший общий делитель (НОД)</strong> двух или более целых чисел — это наибольшее целое число, на которое каждое из этих чисел делится без остатка.</p>
+            <p>Например, НОД(12, 18) = 6, так как 6 — наибольшее число, на которое и 12, и 18 делятся без остатка.</p>
+        </div>
+    </div>
+
+    <script src="bigger.js"></script>
+</body>
+</html>

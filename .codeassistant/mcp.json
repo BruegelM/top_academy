@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "wiki": {
+      "command": "/home/__ARCADIJ__/arcadia/ml/infra/model_context_protocol/servers/wiki/wiki",
+      "args": [
+        "--oauth-file",
+        "/home/__ARCADIJ__/.tokens/wiki"
+      ]
+    }
+  }
+}
