@@ -109,6 +109,10 @@
 
 #==============================================================================
 # ЗАДАЧА 11.15
+# 11.15. Дан массив. Составить программу: 
+#            а) расчета квадратного корня из любого элемента массива; 
+#            б) расчета среднего арифметического двух любых элементов массива. 
+
 
 # from random import randint
 # from math import sqrt
@@ -173,6 +177,10 @@
 
 #==============================================================================
 # ЗАДАЧА 11.17
+# 11.17. Дан массив. Все его элементы: 
+#            а) увеличить в 2 раза; 
+#           б) уменьшить на число А; 
+#           в) разделить на первый элемент. 
 
 
 
@@ -228,9 +236,112 @@
 
 #======================================================================================
 #Задача 11.19
+# 11.19. Определить: 
+#           а) сумму всех элементов массива; 
+#           б) произведение всех элементов массива; 
+#           в) сумму квадратов всех элементов массива; 
+#           г) сумму шести первых элементов массива; 
+#           д) сумму элементов массива с k1-го по k2-й (значения k1 и k2 вводятся с клавиатуры; k2 > k1); 
+#           е) среднее арифметическое всех элементов массива; ж) среднее арифметическое элементов массива с s1-го по s2-й (значения s1 и s2 вводятся с клавиатуры; s2 > s1).
+
+
+# from random import randint
+# from math import sqrt
+
+# lst = []
+# def input_lst():
+#     size = int(input("Введите сколько элементов массива вы хотите: "))
+
+#     for _ in range(size):
+#         lst.append(randint(-100,100))
+
+# def output_lst():
+#     bar = "==" * len(lst)
+#     print("====ВАШ СПИСОК====")
+#     print(f"{bar*2}\n{lst}\n{bar*2}")
+
+# def calculate_slice_lst():
+#     output_lst()
+#     k1 = int(input("введите номер первого элемента: "))
+#     k2 = int(input("введите номер второго элемента: "))
+
+#     if k2 < k1:
+#         return
+
+#     summa =0
+#     for i in range(k1-1,k2):
+#        summa += lst[i]
+
+#     print(f"сумма равна {summa}")
+
+
+# def main():
+#     input_lst()
+#     output_lst()
+#     calculate_slice_lst()
+
+# main()
+
+#======================================================================================
+# 11.16. Дан массив целых чисел. Выяснить: 
+#            а) является ли s-й элемент массива положительным числом; 
+#            б) является ли k-й элемент массива четным числом; 
+#            в) какой элемент массива больше: k-й или s-й. 
+ 
+
+# from random import randint
+# from math import sqrt
+
+# lst = []
+# def input_lst():
+#     size = int(input("Введите сколько элементов массива вы хотите: "))
+
+#     for _ in range(size):
+#         lst.append(randint(-100,100))
+
+# def output_lst():
+#     bar = "==" * len(lst)
+#     print("====ВАШ СПИСОК====")
+#     print(f"{bar*2}\n{lst}\n{bar*2}")
+
+
+# def poloj(s):
+#     if lst[s-1] > 0:
+#         print(True)
+#     else:
+#         print(None)
+
+# def chet(k):
+#     if lst[k-1] % 2 == 0:
+#         print(True)
+#     else:
+#         print(None)
+
+# def bolsh(s,k,lst):
+#     if lst[k-1] > lst[s-1]:
+#         print(f"{k} - больше") 
+#     else:
+#         print(f"{s} - больше") 
+
+#     return(bolsh,chet,poloj)
+
+# def main():
+#     input_lst()
+#     output_lst()
+#     k = int(input("Введите номер K элемента: "))
+#     s = int(input("Введите номер S элемента: "))
+#     bolsh(s,k,lst)
+#     chet(k)
+#     poloj(s)
+
+# main()
+
+#======================================================================================
+# 11.36. Дан массив. Напечатать: 
+#           а) все неотрицательные элементы; 
+#           б) все элементы, не превышающие число 100. 
 
 from random import randint
-from math import sqrt
 
 lst = []
 def input_lst():
@@ -244,24 +355,20 @@ def output_lst():
     print("====ВАШ СПИСОК====")
     print(f"{bar*2}\n{lst}\n{bar*2}")
 
-def calculate_slice_lst():
-    output_lst()
-    k1 = int(input("введите номер первого элемента: "))
-    k2 = int(input("введите номер второго элемента: "))
-
-    if k2 < k1:
-        return
-
-    summa =0
-    for i in range(k1-1,k2):
-       summa += lst[i]
-
-    print(f"сумма равна {summa}")
-
+def minus_lst(lst):
+    size = len(lst)
+    lst2 = [0]
+    element = [0]
+    if element in range(0,size) > 0:
+        lst2.append(element)
+        continue
+        
+    print(lst)
 
 def main():
     input_lst()
     output_lst()
-    calculate_slice_lst()
+    minus_lst(lst)
+    #non_100_lst(lst)
 
 main()

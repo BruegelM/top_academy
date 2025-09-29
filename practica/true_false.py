@@ -107,5 +107,7 @@
 # res = (A % 2 == 0 and B % 2 != 0) or (A % 2 != 0 and B % 2 == 0)
 # res = A > 0 or B > 0
 
-print(5,5,sep = '!!!',end='')
+# print(5,5,sep = '!!!',end='')
+
+ 
 
